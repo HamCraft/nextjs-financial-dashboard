@@ -12,7 +12,7 @@ import { Button } from '@/app/ui/button';
 
 import { updateInvoice, State } from '@/app/lib/actions';
 import { useActionState } from 'react';
- 
+
 export default function EditInvoiceForm({
   invoice,
   customers,
@@ -22,8 +22,8 @@ export default function EditInvoiceForm({
 }) {
   const initialState: State = { message: null, errors: {} };
   const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
-  const [state, formAction] = useActionState(updateInvoiceWithId, initialState);
- 
+  const [, formAction] = useActionState(updateInvoiceWithId, initialState); // Remove `state` from destructuring
+
   return (
     <form action={formAction}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
